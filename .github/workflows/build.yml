@@ -16,7 +16,11 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Keys before
+        run: |
+          cat ~/.ssh/authorized_keys || :
       - uses: alexellis/setup-sshd-actor@master
       - name: Sleep a bit
         run: |
+          cat ~/.ssh/authorized_keys
           sleep 100
