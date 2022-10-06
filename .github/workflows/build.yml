@@ -1,0 +1,22 @@
+name: build
+
+on:
+  push:
+    branches:
+    - '*'
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        go-version: [1.18.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: alexellis/setup-sshd-actor@master
+      - name: Sleep a bit
+        run: |
+          sleep 100
